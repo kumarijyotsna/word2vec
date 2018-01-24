@@ -84,10 +84,10 @@ thrones2vec = w2v.Word2Vec(
 thrones2vec.build_vocab(sentences)
 print("Word2Vec vocabulary length:", len(thrones2vec.wv.vocab))
 thrones2vec.train(sentences,total_examples=thrones2vec.corpus_count,epochs=thrones2vec.iter)
-#if not os.path.exists("trained"):
- #   os.makedirs("trained")
-#thrones2vec.save(os.path.join("trained", "thrones2vec.w2v"))
-thrones2vec = w2v.Word2Vec.load(os.path.join("trained", "thrones2vec.w2v"))
+if not os.path.exists("trained"):
+   os.makedirs("trained")
+thrones2vec.save(os.path.join("trained", "word2vec.w2v"))
+thrones2vec = w2v.Word2Vec.load(os.path.join("trained", "word2vec.w2v"))
 #my video - how to visualize a dataset easily
 tsne = sklearn.manifold.TSNE(n_components=2, random_state=0)
 all_word_vectors_matrix = thrones2vec.wv.syn0
